@@ -11,7 +11,7 @@ export const App: React.FC<PropsApp> = ({ brand, about, workerGeneratePw }) => {
 	const [masterPw, setMasterPw] = React.useState('');
 	const [serviceName, setServiceName] = React.useState('');
 	const [generatedPw, setGeneratedPw] = React.useState('');
-	const [mode, setMode] = React.useState('input');
+	const [mode, setMode] = React.useState<'input' | 'generating' | 'generated'>('input');
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const el = e.currentTarget;
 		const setters = [
@@ -50,6 +50,7 @@ export const App: React.FC<PropsApp> = ({ brand, about, workerGeneratePw }) => {
 			<span className='tkchip-x tktxt tkcolor-fg0'>コピーされました</span>
 		</>,
 	};
+	const isInputDisabled = mode === 'generating';
 	return <div className='tkcnt-y tkalign-center'>
 		<header className='tkcnt-x tksticky-top tkjustify-center tkpy-3 tkshadow-2'>
 			<div className='tkcnt-x tkx-120 tkpx-4 tkjustify-between'>
@@ -65,6 +66,7 @@ export const App: React.FC<PropsApp> = ({ brand, about, workerGeneratePw }) => {
 					className='tkinput-text'
 					value={masterPw}
 					placeholder='YourStrongPassword'
+					disabled={isInputDisabled}
 					onChange={handleChangeInput}
 					data-setter='setMasterPw' />
 			</label>
@@ -75,6 +77,7 @@ export const App: React.FC<PropsApp> = ({ brand, about, workerGeneratePw }) => {
 					className='tkinput-text'
 					value={serviceName}
 					placeholder='Google'
+					disabled={isInputDisabled}
 					onChange={handleChangeInput}
 					data-setter='setServiceName' />
 			</label>
