@@ -29,8 +29,10 @@ const About: React.FC = () => {
 	</>
 }
 
+const workerGeneratePw = new Worker('./worker-generatePw/index.js');
+
 const rendered = <m13TKReact.ProviderPopoverContext>
-	<App brand={brand} about={<About />}></App>
+	<App brand={brand} about={<About />} workerGeneratePw={workerGeneratePw} />
 	<m13TKReact.PopoverRenderer />
 </m13TKReact.ProviderPopoverContext>
 

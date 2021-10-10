@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c --environment BUILD:production",
+    "build:esm": "tsc -p ./tsconfig.esm.json",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json",
     "start": "rollup -c -w --environment BUILD:development",
     "generateThirdpartyFile": "license-checker --production --json --customPath ./scripts/customPath.json | node ./scripts/sanitizeThirdpartyFile.js > ./THIRDPARTY.json"
   },
@@ -44,8 +45,6 @@
     "rollup": "^2.57.0",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-serve": "^1.1.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-worker-factory": "^0.5.7",
     "typescript": "^4.4.3"
   }
 }

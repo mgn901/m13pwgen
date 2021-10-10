@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { ShowGeneratedPw } from './ShowGeneratedPw';
-import WorkerGeneratePw from 'worker!./generatePw.worker.ts';
 
 interface PropsApp {
+	workerGeneratePw: Worker,
 	brand?: React.ReactNode,
 	about?: React.ReactNode,
 }
 
-const workerGeneratePw = new WorkerGeneratePw();
-
-export const App: React.FC<PropsApp> = ({ brand, about }) => {
+export const App: React.FC<PropsApp> = ({ brand, about, workerGeneratePw }) => {
 	const [masterPw, setMasterPw] = React.useState('');
 	const [serviceName, setServiceName] = React.useState('');
 	const [generatedPw, setGeneratedPw] = React.useState('');
